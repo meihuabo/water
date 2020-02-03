@@ -4,12 +4,18 @@ package water
 
 import (
 	"os"
+	"runtime"
 )
 
 func openDev(config Config) (ifce *Interface, err error) {
 	var file *os.File
+	fdLoc := "/dev/net/tun"
+	if runtime.GOARCH == "arm" {
+		fdLoc := "/dev/tun"
+	}
+
 	if file, err = os.OpenFile(
-		"/dev/net/tun", os.O_RDWR, 0); err != nil {
+		fdLoc, os.O_RDWR, 0); err != nil {
 		return nil, err
 	}
 
