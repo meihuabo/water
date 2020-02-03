@@ -11,7 +11,7 @@ func openDev(config Config) (ifce *Interface, err error) {
 	var file *os.File
 	fdLoc := "/dev/net/tun"
 	if runtime.GOARCH == "arm" {
-		fdLoc := "/dev/tun"
+		fdLoc = "/dev/tun"
 	}
 
 	if file, err = os.OpenFile(

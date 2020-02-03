@@ -12,7 +12,7 @@ func openDev(config Config) (ifce *Interface, err error) {
 	var fdInt int
 	fdLoc := "/dev/net/tun"
 	if runtime.GOARCH == "arm" {
-		fdLoc := "/dev/tun"
+		fdLoc = "/dev/tun"
 	}
 
 	if fdInt, err = syscall.Open(
